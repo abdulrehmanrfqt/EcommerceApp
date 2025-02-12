@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useContext, useState } from "react";
 import LinearGradient from "react-native-linear-gradient";
 import Header from "../components/Header";
@@ -37,6 +37,7 @@ const ProductDetailsScreen = () => {
       <View style={styles.header}>
         <Header />
       </View>
+      <ScrollView>
       <View style={styles.imageContainer}>
         <Image source={{ uri: product.image }} style={styles.coverImage} />
       </View>
@@ -134,6 +135,7 @@ const ProductDetailsScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
     </LinearGradient>
   );
 };
