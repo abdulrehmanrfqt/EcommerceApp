@@ -14,6 +14,11 @@ import Tags from "../components/Tags";
 import ProductCard from "../components/ProductCard";
 import data from "../data/data.json";
 import { useNavigation } from "@react-navigation/native";
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveFontSize
+} from "react-native-responsive-dimensions";
 
 const HomeScreen = () => {
   const [products, setProducts] = useState(data.products);
@@ -38,29 +43,38 @@ const HomeScreen = () => {
 
   return (
     <LinearGradient colors={["#FDF0F3", "#FFFBFC"]} style={styles.container}>
-      {/* header */}
-
-      {/* <Tags /> */}
+      <Header />
+      <View>
+        <Text style={styles.headingText}>Match Your Style</Text>
+        <View style={styles.inputContainer}>
+          <Image
+            source={require("../assets/search.png")}
+            style={styles.searchIcon}
+          />
+          <TextInput placeholder="Search" style={styles.textInput} />
+        </View>
+      </View>
+      <Tags />
 
       <FlatList
-        ListHeaderComponent={
-          <>
-            <>
-              <Header />
-              <View>
-                <Text style={styles.headingText}>Match Your Style</Text>
-                <View style={styles.inputContainer}>
-                  <Image
-                    source={require("../assets/search.png")}
-                    style={styles.searchIcon}
-                  />
-                  <TextInput placeholder="Search" style={styles.textInput} />
-                </View>
-              </View>
-            </>
-            <Tags />
-          </>
-        }
+        // ListHeaderComponent={
+        //   <>
+        //     <>
+        //       <Header />
+        //       <View>
+        //         <Text style={styles.headingText}>Match Your Style</Text>
+        //         <View style={styles.inputContainer}>
+        //           <Image
+        //             source={require("../assets/search.png")}
+        //             style={styles.searchIcon}
+        //           />
+        //           <TextInput placeholder="Search" style={styles.textInput} />
+        //         </View>
+        //       </View>
+        //     </>
+        //     <Tags />
+        //   </>
+        // }
         data={products}
         numColumns={2}
         renderItem={({ item }) => (
@@ -71,6 +85,7 @@ const HomeScreen = () => {
           />
         )}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: responsiveFontSize(30)}}
       />
       <View>
         {/* <Text>HomeScreen</Text>
